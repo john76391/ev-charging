@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import SideBar from "@/components/SideBar";
 import Card from "@/components/Card";
 import PageTitle from "@/components/PageTitle";
+import axios from "axios";
 
 export default function Home() {
   const data = [
@@ -15,6 +16,16 @@ export default function Home() {
 
   useEffect(() => {
     setCardData(data);
+
+    // 資料庫初始化
+    const modelInit = async () => {
+      try {
+        const res = await axios("http://localhost:3000/api/db");
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    modelInit();
   }, []);
 
   return (
