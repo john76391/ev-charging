@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import SideBar from "@/components/SideBar";
 import Card from "@/components/Card";
 import PageTitle from "@/components/PageTitle";
-import axios from "axios";
-
+import axiosInstance from "@/services/axios-instance";
 export default function Home() {
   const data = [
     { title: "費用", content: "$ 500" },
@@ -20,7 +19,7 @@ export default function Home() {
     // 資料庫初始化
     const modelInit = async () => {
       try {
-        const res = await axios("http://localhost:3000/api/db");
+        const res = await axiosInstance("/db");
       } catch (e) {
         console.log(e);
       }

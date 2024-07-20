@@ -7,9 +7,9 @@ export default async function handler(req, res) {
       where: { name: "Edward" },
       defaults: {
         name: "Edward",
-        username: "test123",
-        email: "test1234@gmail.com",
-        password: "Test1234",
+        username: "edward123",
+        email: "edward123@gmail.com",
+        password: "Edward123",
       },
     });
     res.status(200).json({ message: "Database initialized successfully" });
