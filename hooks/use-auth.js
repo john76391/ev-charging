@@ -23,13 +23,15 @@ export function AuthProvider({ children }) {
           user: res.data.user,
         });
       } else {
-        // 如果是登出狀態，設定為未登入，user資料為null，並導向登入頁面
-        router.push("/member/login");
+        if (router.pathname !== "/member/register") {
+          // 如果是登出狀態，設定為未登入，user資料為null，並導向登入頁面
+          router.push("/member/login");
 
-        setAuth({
-          isAuthenticated: false,
-          user: null,
-        });
+          setAuth({
+            isAuthenticated: false,
+            user: null,
+          });
+        }
       }
     } catch (e) {
       console.log(e);
