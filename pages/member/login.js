@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 import ShowPassword from "@/components/ShowPassword";
 import axiosInstance from "@/services/axios-instance";
 import { useAuth } from "../../hooks/use-auth";
+import { FcGoogle } from "react-icons/fc";
+import { FaLine } from "react-icons/fa";
 
 export default function Login() {
   const { auth, setAuth } = useAuth();
@@ -59,6 +61,18 @@ export default function Login() {
     <div className="min-h-screen flex justify-center items-center">
       <div className="p-12 px-8 sm:px-24  container md:max-w-3xl mx-auto  flex-col-center">
         <div className="text-3xl font-bold mb-8 text-center">登入</div>
+
+        {/* 第三方登入 */}
+        <div className="w-full grid xl:grid-cols-2 gap-5 mb-5">
+          <button className="border-2 border-gray-400 p-2 px-10 rounded-lg flex gap-1 justify-center items-center hover:bg-gray-100">
+            <FcGoogle className="w-6 h-6" />
+            google
+          </button>
+          <button className="border-2 border-gray-400 p-2 px-10 rounded-lg flex gap-1 justify-center items-center hover:bg-gray-100">
+            <FaLine className="w-6 h-6 text-green-600" />
+            Line
+          </button>
+        </div>
 
         {/* 帳號密碼登入 */}
         <form

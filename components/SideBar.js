@@ -20,9 +20,14 @@ export default function SideBar() {
         Swal.fire({
           title: "成功登出",
           icon: "success",
-          didClose: () => {
+          didClose: async () => {
             // 成功登出後導向登入頁面
-            router.push("/member/login");
+            await router.push("/member/login");
+            // 設定全域狀態
+            await setAuth({
+              isAuthenticated: false,
+              user: null,
+            });
           },
         });
       } else {
@@ -30,18 +35,17 @@ export default function SideBar() {
         Swal.fire({
           title: res.data.message,
           icon: "error",
-          didClose: () => {
+          didClose: async () => {
             // 登出失敗後導向登入頁面
-            router.push("/member/login");
+            await router.push("/member/login");
+            // 設定全域狀態
+            await setAuth({
+              isAuthenticated: false,
+              user: null,
+            });
           },
         });
       }
-
-      // 登出成功與否都設定全域狀態
-      setAuth({
-        isAuthenticated: false,
-        user: null,
-      });
     } catch (e) {
       console.log(e);
     }
