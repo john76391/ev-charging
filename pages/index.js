@@ -37,7 +37,7 @@ export default function Home() {
           <div className="text-3xl">登入以查看內容</div>
         </div>
       ) : (
-        <div className="sm:grid grid-cols-12">
+        <div className="sm:grid grid-cols-12 min-h-screen">
           <div className="hidden sm:block col-span-3 lg:col-span-2">
             <SideBar />
           </div>

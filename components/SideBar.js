@@ -75,10 +75,13 @@ export default function SideBar() {
         </ul>
       </div>
       {/* 登出按鈕 */}
-      <MdLogout
+      <div
         onClick={handleLogout}
-        className="w-7 h-7 text-white self-start cursor-pointer"
-      />
+        className="w-full cursor-pointer bg-slate-700 rounded-md p-2 flex justify-center items-center gap-4 group hover:bg-slate-600"
+      >
+        <div className="text-white font-semibold">登出</div>
+        <MdLogout className="w-7 h-7 text-white transition duration-200 group-hover:translate-x-1" />
+      </div>
     </div>
   );
 }
