@@ -4,7 +4,7 @@ import { AuthProvider } from "@/hooks/use-auth";
 export default function App({ Component, pageProps }) {
   return (
     <AuthProvider>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </AuthProvider>
   );
 }
