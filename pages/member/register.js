@@ -4,6 +4,7 @@ import axiosInstance from "@/services/axios-instance";
 import Swal from "sweetalert2";
 import ShowPassword from "@/components/ShowPassword";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Register() {
   const router = useRouter();
@@ -34,7 +35,7 @@ export default function Register() {
   // 表單提交事件
   const onSubmit = async (formValues) => {
     try {
-      const res = await axiosInstance.post("/users", formValues);
+      const res = await axiosInstance.post("/users/register", formValues);
       // 處理res結果，根據成功或失敗顯示訊息
       if (res.data.status === "success") {
         Swal.fire({
@@ -69,7 +70,7 @@ export default function Register() {
   return (
     <div className="min-h-screen flex justify-center items-center">
       <div className="p-12 px-8 container md:max-w-3xl mx-auto   sm:px-24 flex-col-center">
-        <div className="text-3xl font-bold mb-8 text-center">註冊會員</div>
+        <div className="text-3xl font-bold mb-4 text-center">註冊會員</div>
         {/* 表單內容 */}
         <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-6">
           {/* Name */}
@@ -212,6 +213,21 @@ export default function Register() {
           >
             註冊
           </button>
+
+          {/* 分隔線 */}
+          <div className="divider text-xs sm:text-sm text-gray-400 mb-8">
+            已經有帳號了?
+          </div>
+
+          {/* 註冊會員連結 */}
+          <div className="w-full">
+            <Link
+              href={"/member/login"}
+              className="block text-center w-full border-2 border-gray-300 p-2 px-4 rounded-md text-xs sm:text-sm hover:bg-gray-100"
+            >
+              登入
+            </Link>
+          </div>
         </form>
       </div>
     </div>

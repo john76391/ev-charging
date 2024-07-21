@@ -53,6 +53,8 @@ export default async function handler(req, res) {
         status: "success",
         data: user,
       });
+    } else {
+      res.status(405).json({ error: "Method not allowed" });
     }
   } catch (error) {
     res.status(500).json({ error: "創建會員失敗" });
