@@ -1,8 +1,12 @@
 import React from "react";
 
-export default function HistoryCardM() {
+export default function HistoryCardM({ isOpen }) {
   return (
-    <ul className="shadow-md p-5 space-y-3 text-gray-200 bg-neutral-500 rounded-md">
+    <ul
+      className={`shadow-md p-5 space-y-3 text-gray-200  rounded-md ${
+        isOpen ? "bg-black/10" : "bg-neutral-500"
+      }`}
+    >
       <li className="flex justify-between">
         <div className="font-semibold">充電日期：</div>
         <div className="text-sm sm:text-base">2024/07/15</div>

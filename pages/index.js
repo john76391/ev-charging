@@ -5,6 +5,7 @@ import PageTitle from "@/components/PageTitle";
 import axiosInstance from "@/services/axios-instance";
 import { useAuth } from "@/hooks/use-auth";
 import UnAuthenticated from "@/components/UnAuthenticated";
+import NavBarM from "@/components/NavBarM";
 
 export default function Home() {
   const { auth } = useAuth();
@@ -16,6 +17,9 @@ export default function Home() {
   ];
   // 設定初始狀態
   const [cardData, setCardData] = useState([{ title: "", content: "" }]);
+
+  // 切換側邊選單
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     setCardData(data);
@@ -36,13 +40,18 @@ export default function Home() {
       {!auth.isAuthenticated ? (
         <UnAuthenticated />
       ) : (
-        <div className="sm:grid grid-cols-12 min-h-screen">
+        <div
+          className={`sm:grid grid-cols-12 min-h-screen ${
+            isOpen ? "bg-black/60" : ""
+          }`}
+        >
+          <NavBarM isOpen={isOpen} setIsOpen={setIsOpen} />
           <div className="hidden sm:block col-span-3 lg:col-span-2">
             <SideBar />
           </div>
           {/* main content */}
           <div className="col-span-9 lg:col-span-10 p-8 space-y-6">
-            <PageTitle title={"總覽"} />
+            <PageTitle title={"總覽"} isOpen={isOpen} />
 
             <div className="grid gap-5 grid-cols-2 sm:grid-cols-3">
               {cardData.map((v, i) => {
