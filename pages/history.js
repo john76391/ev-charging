@@ -5,15 +5,14 @@ import HistoryHeader from "@/components/history/HistoryHeader";
 import HistoryEntry from "@/components/history/HistoryEntry";
 import HistoryCardM from "@/components/history/HistoryCardM";
 import { useAuth } from "@/hooks/use-auth";
+import UnAuthenticated from "@/components/UnAuthenticated";
 
 export default function History() {
   const { auth } = useAuth();
   return (
     <>
       {!auth.isAuthenticated ? (
-        <div className="w-full h-screen flex justify-center items-center">
-          <h1 className="text-3xl">登入以查看內容</h1>
-        </div>
+        <UnAuthenticated />
       ) : (
         <div className="sm:grid grid-cols-12 min-h-screen">
           <div className="hidden sm:block col-span-3 lg:col-span-2">

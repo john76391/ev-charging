@@ -4,6 +4,7 @@ import Card from "@/components/Card";
 import PageTitle from "@/components/PageTitle";
 import axiosInstance from "@/services/axios-instance";
 import { useAuth } from "@/hooks/use-auth";
+import UnAuthenticated from "@/components/UnAuthenticated";
 
 export default function Home() {
   const { auth } = useAuth();
@@ -33,9 +34,7 @@ export default function Home() {
   return (
     <>
       {!auth.isAuthenticated ? (
-        <div className="w-full h-screen flex justify-center items-center">
-          <div className="text-3xl">登入以查看內容</div>
-        </div>
+        <UnAuthenticated />
       ) : (
         <div className="sm:grid grid-cols-12 min-h-screen">
           <div className="hidden sm:block col-span-3 lg:col-span-2">
