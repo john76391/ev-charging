@@ -8,7 +8,7 @@
 
 若本機中沒有下載資料庫管理系統，請參考下方的MariaDB安裝步驟以及資料庫初始化
 
-若本機中已有下載DBMS，無論是MySQL、MariaDB、XAMPP皆可，則請直接新建一個名為**ems**的資料庫並新增使用者，用戶名及密碼如下
+若本機中已有下載RDBMS，無論是MySQL、MariaDB、XAMPP皆可，則請直接新建一個名為**ems**的資料庫並新增使用者，用戶名及密碼如下
 
 :bangbang: **請確保用戶名以及密碼與下方一致，以便程式能夠正確連到資料庫**
 
@@ -83,11 +83,15 @@
 ![螢幕擷取畫面 2024-07-22 164150](https://github.com/user-attachments/assets/0c36b784-cec5-41e8-bed8-dc619f395d80)
 
 ## 執行程式碼
-於IDE中開啟專案並在終端機中輸入`npm run dev`
+於VS Code中開啟專案並在終端機中輸入`npm run dev`
 
-開啟瀏覽器並輸入網址[http://localhost:3000](http://localhost:3000)
+開啟瀏覽器並輸入網址[http://localhost:3000](http://localhost:3000)即可開啟專案
 
+可使用測試的使用者登入，帳號密碼如下
 
-
+```
+帳號：test123
+密碼：Test1234
+```
 
 
