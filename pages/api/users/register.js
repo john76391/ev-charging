@@ -32,12 +32,13 @@ export default async function handler(req, res) {
           password: newUser.password,
         },
       });
+      console.log("created message==========", created);
 
       // 新增失敗
       if (!created) {
-        if (user.username === newUser.username) {
+        if (user.username.toLowerCase() === newUser.username.toLowerCase()) {
           return res.json({ status: "error", message: "此帳號已存在" });
-        } else if (user.email === newUser.email) {
+        } else if (user.email.toLowerCase() === newUser.email.toLowerCase()) {
           return res.json({ status: "error", message: "此信箱已存在" });
         } else {
           return res.json({
