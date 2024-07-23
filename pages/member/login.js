@@ -21,8 +21,8 @@ export default function Login() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      username: "test123",
-      password: "Test1234",
+      username: "",
+      password: "",
     },
   });
 
@@ -61,9 +61,8 @@ export default function Login() {
     <div className="min-h-screen flex justify-center items-center">
       <div className="p-12 px-8 sm:px-24  container md:max-w-3xl mx-auto  flex-col-center">
         <div className="text-3xl font-bold mb-8 text-center">登入</div>
-
         {/* 第三方登入 */}
-        <div className="w-full grid xl:grid-cols-2 gap-5 mb-5">
+        {/* <div className="w-full grid xl:grid-cols-2 gap-5 mb-5">
           <button className="border-2 border-gray-400 p-2 px-10 rounded-lg flex gap-1 justify-center items-center hover:bg-gray-100">
             <FcGoogle className="w-6 h-6" />
             google
@@ -72,7 +71,7 @@ export default function Login() {
             <FaLine className="w-6 h-6 text-green-600" />
             Line
           </button>
-        </div>
+        </div> */}
 
         {/* 帳號密碼登入 */}
         <form
@@ -135,7 +134,6 @@ export default function Login() {
             登入
           </button>
         </form>
-
         {/* 分隔線 */}
         <div className="divider text-xs sm:text-sm text-gray-400 mb-8">
           EV Charging新朋友?

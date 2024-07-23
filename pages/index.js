@@ -11,9 +11,11 @@ export default function Home() {
   const { auth } = useAuth();
   const data = [
     { title: "費用", content: "$ 500" },
-    { title: "剩餘時間", content: "30 Mins" },
-    { title: "Energy", content: "68.2 kwh" },
+    { title: "剩餘時間", content: "18 分鐘" },
+    { title: "充電功率", content: "68.2 kwh" },
     { title: "電量", content: "76%" },
+    { title: "充電站名稱", content: "永和秀朗樂活停車場" },
+    { title: "充電器類型", content: "快充" },
   ];
   // 設定初始狀態
   const [cardData, setCardData] = useState([{ title: "", content: "" }]);
