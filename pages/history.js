@@ -7,12 +7,30 @@ import HistoryCardM from "@/components/history/HistoryCardM";
 import { useAuth } from "@/hooks/use-auth";
 import UnAuthenticated from "@/components/UnAuthenticated";
 import NavBarM from "@/components/NavBarM";
+import axiosInstance from "@/services/axios-instance";
 
 export default function History() {
+  const [historyList, setHistoryList] = useState([]);
   const { auth } = useAuth();
 
   // 切換側邊選單
   const [isOpen, setIsOpen] = useState(false);
+
+  // 取得歷史紀錄
+  useEffect(() => {
+    const fetchTest = async () => {
+      try {
+        const res = await axiosInstance.get("/history");
+        // 設定歷史紀錄
+        if (res.data.status === "success") {
+          setHistoryList(res.data.history);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetchTest();
+  }, []);
 
   return (
     <>
@@ -42,17 +60,15 @@ export default function History() {
               {/* body */}
               {/* // TODO 一般的紀錄 border-b border-b-gray-300 */}
               {/* // TODO 最後一條 rounded-b-md */}
-              <HistoryEntry />
-              <HistoryEntry />
-              <ul className="grid grid-cols-12 text-gray-200 text-sm xl:text-base bg-neutral-500 p-2 px-3 text-center rounded-b-md ">
-                <li className="col-span-2 py-3">2024/07/15</li>
-                <li className="col-span-3 py-3">林口停三立體停車場</li>
-                <li className="col-span-1 py-3">08:30:00</li>
-                <li className="col-span-1 py-3">08:52:00</li>
-                <li className="col-span-3 py-3">新北市八里區觀海大道36號</li>
-                <li className="col-span-1 py-3">22分鐘</li>
-                <li className="col-span-1 py-3">$ 150</li>
-              </ul>
+              {historyList.length === 0 ? (
+                <div className="text-center text-xl p-3 font-semibold">
+                  無歷史紀錄
+                </div>
+              ) : (
+                historyList.map((list, i) => {
+                  return <HistoryEntry key={i} history={list} />;
+                })
+              )}
             </div>
           </div>
         </div>

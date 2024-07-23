@@ -4,14 +4,27 @@ import sequelize from "../db.mjs";
 const History = sequelize.define(
   "History",
   {
-    // Model attributes are defined here
+    customerId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    chargingDate: {
+      type: DataTypes.DATEONLY,
+    },
+    startTime: {
+      type: DataTypes.DATE,
+    },
+    endTime: {
+      type: DataTypes.DATE,
+    },
     stationName: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     address: {
       type: DataTypes.STRING,
-      // allowNull defaults to true
+    },
+    cost: {
+      type: DataTypes.INTEGER,
     },
   },
   {
@@ -20,4 +33,3 @@ const History = sequelize.define(
 );
 
 export default History;
-

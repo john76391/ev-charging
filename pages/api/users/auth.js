@@ -1,5 +1,5 @@
 import authenticate from "@/middleware/authenticate";
-import User from "@/db/model/User.mjs";
+import { History, User } from "@/db/model/BulkCreateModels.mjs";
 
 export default async function handler(req, res) {
   try {
